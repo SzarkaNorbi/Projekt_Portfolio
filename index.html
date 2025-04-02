@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Szarka-Kovács Norbert | Portfólió</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2d3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --text-color: #333;
+            --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: #f9f9f9;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .header-content h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .header-content p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        nav {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-weight: bold;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+            padding-bottom: 5px;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--secondary-color);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark-color);
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: var(--dark-color);
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--secondary-color);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .profile-img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .about-text p {
+            margin-bottom: 1rem;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.06);
+        }
+
+        .project-img {
+            height: 180px;
+            background-color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark-color);
+        }
+
+        .project-date {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .project-link {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background-color: var(--secondary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .project-link:hover {
+            background-color: var(--primary-color);
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .btn:hover {
+            background-color: var(--primary-color);
+        }
+
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            list-style: none;
+        }
+
+        .social-links li {
+            margin: 0 0.5rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .header-content h1 {
+                font-size: 2rem;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                flex-direction: column;
+                padding: 1rem 0;
+                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                margin: 0;
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 0.75rem 2rem;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .profile-img {
+                max-width: 300px;
+                margin: 0 auto 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-content h1 {
+                font-size: 1.75rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Szarka-Kovács Norbert</h1>
+    </header>
+    <main>
+        <section id="projects">
+            <h2 class="section-title">Projektek</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-img">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Összeadás</h3>
+                        <span class="project-date">2023.09.11</span>
+                        <a href="https://szarkanorbi.github.io/osszeadas_gyak/" class="project-link" target="_blank">Megtekintés</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-img">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Számológép</h3>
+                        <span class="project-date">2023.09.18</span>
+                        <a href="https://szarkanorbi.github.io/Szamologep/" class="project-link" target="_blank">Megtekintés</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-img">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Profit kalkulátor</h3>
+                        <span class="project-date">2023.11.13</span>
+                        <a href="https://szarkanorbi.github.io/Profit_Kalkulator/" class="project-link" target="_blank">Megtekintés</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-img">
+                        
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Multiple Web Pages</h3>
+                        <span class="project-date">2023.12.04</span>
+                        <a href="https://szarkanorbi.github.io/multiplepages/" class="project-link" target="_blank">Megtekintés</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-img">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Órarend</h3>
+                        <span class="project-date">2023.12.12</span>
+                        <a href="https://szarkanorbi.github.io/-rarend/" class="project-link" target="_blank">Megtekintés</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-img">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Tetris</h3>
+                        <span class="project-date">2024.01.08</span>
+                        <a href="https://szarkanorbi.github.io/tetris/" class="project-link" target="_blank">Megtekintés</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-img">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Malom</h3>
+                        <span class="project-date">2025.03.19</span>
+                        <a href="https://szarkanorbi.github.io/malom/" class="project-link" target="_blank">Megtekintés</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-img">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Naptár</h3>
+                        <span class="project-date">2025.04.02</span>
+                        <a href="https://szarkanorbi.github.io/naptar/" class="project-link" target="_blank">Megtekintés</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
